@@ -3,16 +3,10 @@
 //
 
 #include "smain.h"
+#include <iostream>
 
-//#include <Windows.h>
-//#include <iostream>
 #include <string>
 #include <direct.h>
-
-//#include <filesystem>
-using namespace std;
-
-#define LENTH 255
 
 
 
@@ -27,7 +21,9 @@ int sMain::get_windowHandle() {
 
 int uimain(std::function<int()> run ) {
 
-    //SciterSetOption(NULL, SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS | SW_MAIN | SW_GLASSY /*| SW_ENABLE_DEBUG - frame sets it manually*/);
+#ifdef _DEBUG
+    std::cout << getcwd(NULL , 0) << std::endl;
+#endif
 
     //SciterSetGlobalAsset(new sqlite::SQLite());
 
@@ -36,7 +32,8 @@ int uimain(std::function<int()> run ) {
     bool loaded = false;
     const std::vector<sciter::string>& argv = sciter::application::argv();
 
-    pwin->load(WSTR("F:/CProject/sciter-js-sdk-main/rapIM/res/server/holle.html"));
-
+    pwin->load(WSTR("./res/server/holle.html"));
+    pwin->expand();
     return run();
 }
+

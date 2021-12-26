@@ -3,6 +3,9 @@ PROJECT(server)
 
 
 file(GLOB SERVER_SRC ./*.cpp)
+
+
+message(STATUS "SERVER_SRC: ${SERVER_SRC}")
 message(STATUS "SCITER_SRC: ${SCITER_SRC}")
 message(STATUS "SQLITE_SDK_INC: ${SQLITE_SDK_INC}")
 
